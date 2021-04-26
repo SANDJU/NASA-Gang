@@ -13,7 +13,7 @@ body{
 }
 
 .elon { 
-    border: 2px solid orange;
+    padding-top: 100px;
     border-radius: 8px;
     display: block;
     margin-left: auto;
@@ -27,4 +27,7 @@ p {
 }
 .buttons {
     text-align: center;
+}
+.pics {
+    border: 1px solid orange;
 }
