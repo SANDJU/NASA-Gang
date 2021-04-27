@@ -5,7 +5,7 @@ var Rovers = document.getElementById("Rovers")
 
 
 var apiURL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3"
-
+consolelog(apiURL)
 					var apiKey = 'PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3'; 
 
 					var request = new XMLHttpRequest(); 
