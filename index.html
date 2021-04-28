@@ -4,102 +4,99 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" 
-    integrity="sha384-G9DpmGxRIF6tpgbrkZVcZDeIomEU22LgTguPAI739bbKytjPE/kHTK5YxjJAAEXC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="CSS/style.css">
+
+    <!-- stylesheets start -->
+      <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" 
+      integrity="sha384-G9DpmGxRIF6tpgbrkZVcZDeIomEU22LgTguPAI739bbKytjPE/kHTK5YxjJAAEXC" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="CSS/style.css">
+    <!-- stylesheets end -->
+
     <title>A day on Mars</title>
   </head>
 
   <body>
     <div class="Mars-header">
-    <header>A day on Mars</header>
+      <header>A day on Mars</header>
     </div>
     <h3>Find out what the weather was like on your birthday!</h3>
-    <h1>Weather</h1>
-    <h1>Choose a Date</h1>
-    <input type="date"></input>
 
-    <h3>Photos from the Rovers!</h3>
-  
-    <div class="pure-g">
-      <div id="Opportunity" class="pure-u-lg-1-4"><p>Opportunity</p>
-      <img class="pics" id="Opportunity" src="images/Opportunity.png" alt="Opportunity rover" width="200" height="200" onclick="selectRover(this.id)" >
-      </div>
-      
-      <div id="Curiosity" class="pure-u-lg-1-4"><p>Curiosity</p>
-        <img class="pics" id="Curiosity" src="images/curiosity.jpeg" alt="Curiosity rover" width="200" height="200" onclick="selectRover(this.id)" >  
+    <main>
+      <div class="container">
+        <section>
+          <h1>Weather</h1>
+          <h1>Choose a Date</h1>
+          <input type="date"></input>
 
-      </div>
-      <div id="Spirit" class="pure-u-lg-1-4"><p>Spirit</p>
-        <img class="pics" id="Spirit" src="images/spirit.jpeg" alt="Spirit rover" width="200" height="200" onclick="selectRover(this.id)" >  
-      </div>
-      <button class="photo-button" onclick="getImages()">See photos <i aria-hidden="true"></i> </i></button>
-      </div>
-
-  <!-- Elon Start-->
-   <div class="Elon-Musk">
-     <img class="elon" src="images/musk.png" alt="Elon on Mars" width="300" height="900">
-      <div class="vote">
-        <p> Want to help fund Elon Musk's trip to Mars? </p>
-      </div>
-      <div class="buttons">
-        <button id="Donate btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"> Donate!</button>
-        <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Donate!</h4>
-        </div>
-        <div class="modal-body">
-          <p>Nice try! Elon Musk has enough money to get himself to Mars.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-      <button id="yeah-right btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2"> Yeah Right!</button>
-      <div class="modal fade" id="myModal2" role="dialog">
-        <div class="modal2-dialog">
+          <h3>Photos from the Rovers!</h3>
         
-          <!-- Modal content-->
-          <div class="modal2-content">
-            <div class="modal2-header">
-              <button type="button2" class="close2" data-dismiss="modal2">&times;</button>
-              
+          <div class="pure-g">
+            <div id="Opportunity" class="pure-u-lg-1-4"><p>Opportunity</p>
+            <img class="pics" id="Opportunity" src="images/Opportunity.png" alt="Opportunity rover" width="200" height="200" onclick="selectRover(this.id)" >
             </div>
-            <div class="modal2-body">
-              <p>A wise one you are. </p>
+            
+            <div id="Curiosity" class="pure-u-lg-1-4"><p>Curiosity</p>
+              <img class="pics" id="Curiosity" src="images/curiosity.jpeg" alt="Curiosity rover" width="200" height="200" onclick="selectRover(this.id)" >  
+
             </div>
-            <div class="modal2-footer">
-              <button type="button2" class="btn btn-default" data-dismiss="modal2">Close</button>
+            <div id="Spirit" class="pure-u-lg-1-4"><p>Spirit</p>
+              <img class="pics" id="Spirit" src="images/spirit.jpeg" alt="Spirit rover" width="200" height="200" onclick="selectRover(this.id)" >  
+            </div>
+            <button class="photo-button" onclick="getImages()">See photos <i aria-hidden="true"></i> </i></button>
+          </div>
+        </section>
+
+
+        <!-- donate section starts -->
+        <section class="row">
+          <h2 id="help-elon">HELP ELON GET HOME</h2>
+          <img src="./images/musk.png" class="col-md-6" alt="Elon Musk">
+          <div class="col">
+            <div class="row">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Donate:</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name" aria-label="name" aria-describedby="basic-addon1"/>
+                <br>
+                <form class="input-group mb-3">
+                  <span class="input-group-text">$</span>
+                  <span class="input-group-text">0.00</span>
+                  <input type="text" class="form-control" placeholder="Amount" aria-label="Dollar amount (with dot and two decimal places)" id="amount">
+                  <button class="btn btn-warning" type="submit" id="button-addon2 donate">Donate</button>
+                </form>
+                <div id="fail" style="display: none;">
+                  <div class="alert alert-danger" role="alert">
+                    <strong>Woops!</strong> Looks like you left something blank.
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Donations:</label>
+                <ol class="donations" id="donations">
+                  <li>Hello</li>
+                </ol>
+              </div>
             </div>
           </div>
-          
-        </div>
+        </section>
+        <!-- donate section ends-->
       </div>
-      </div>
-     </div>
+    </main>
+
+    
     
 
 
-
-   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
-   <script src="assets/js/nasa.js"></script>
-   <div id="photo-enable"></div>
+    <!-- scripts  start -->
+      <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+      <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+      <script src="assets/js/nasa.js"></script>
+    <!-- scripts end -->
+    <div id="photo-enable"></div>
   </body>
   </html>
