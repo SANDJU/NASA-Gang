@@ -1,3 +1,46 @@
+<<<<<<< HEAD
+let xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function () {
+	if(this.readyState ==4 && this.status ==200) {
+		let data = JSON.parse(this.responseText);
+		
+		
+		let date = data["date"];
+		let explanation = data["explanation"];
+		let title = data["title"];
+		let url = data["url"];
+
+		document.getElementById("wrapper-url").src = url;
+		document.getElementById("wrapper-title").innerHTML = title;
+		document.getElementById("wrapper-explanation").innerHTML = explanation;
+		
+	}
+};
+
+		
+let queryUrl = "https://api.nasa.gov/planetary/apod?";
+let queryKey = "api_key=w3obOup6Ajl4dqP082rz16tqUZ27tfxDFdXlixML&";
+let queryDate = "date=" + "2015-02-09" + "&";
+
+let queryFull = queryUrl + queryKey + queryDate;
+
+var api_key = "DEMO_KEY";
+
+xmlhttp.open("GET", queryFull, true);
+xmlhttp.send();
+
+
+
+
+
+
+
+
+
+
+
+=======
 // donate function starts
 	(function(){
 	
@@ -48,6 +91,7 @@
 		getValues();
 	})();
 // donate function ends
+>>>>>>> 7fb8ae1ac9a47b102fecd54bfb11c61c40e67eda
 
 //Rover Ids
 var Curiosity = document.getElementById("Curriosity")
