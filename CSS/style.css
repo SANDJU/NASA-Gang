@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 .Mars-header {
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -12,15 +18,17 @@ body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.elon { 
-    padding-top: 100px;
-    border-radius: 8px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-
+h2 {
+    text-align: center;
+    margin: 30px;
 }
+
+.donations {
+    background-color: white;
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+
 p {
     text-align: center;
     font-size: 40px;
