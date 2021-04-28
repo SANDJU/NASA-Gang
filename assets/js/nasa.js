@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 let xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function () {
@@ -40,7 +39,6 @@ xmlhttp.send();
 
 
 
-=======
 // donate function starts
 	(function(){
 	
@@ -91,7 +89,6 @@ xmlhttp.send();
 		getValues();
 	})();
 // donate function ends
->>>>>>> 7fb8ae1ac9a47b102fecd54bfb11c61c40e67eda
 
 //Rover Ids
 var Curiosity = document.getElementById("Curriosity")
