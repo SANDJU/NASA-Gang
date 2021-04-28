@@ -26,17 +26,20 @@
   
     <div class="pure-g">
       <div id="Opportunity" class="pure-u-lg-1-4"><p>Opportunity</p>
-        <input type="image" src="images/Opportunity.png" name="Opportunity" class="pics" id="picbutton"  alt="opportunity rover" width="200" height="200">
+      <img class="pics" id="Opportunity" src="images/Opportunity.png" alt="Opportunity rover" width="200" height="200" onclick="selectRover(this.id)" >
       </div>
       
       <div id="Curiosity" class="pure-u-lg-1-4"><p>Curiosity</p>
-        <input type="image" src="images/curiosity.jpeg" name="Curiosity" class="pics" id="picbutton"  alt="Curiosity rover" width="200" height="200">  
+        <img class="pics" id="Curiosity" src="images/curiosity.jpeg" alt="Curiosity rover" width="200" height="200" onclick="selectRover(this.id)" >  
 
       </div>
       <div id="Spirit" class="pure-u-lg-1-4"><p>Spirit</p>
-        <input type="image" src="images/spirit.jpeg" name="Spirit" class="pics" id="saveForm"  alt="Spirit rover" width="200" height="200">
+        <img class="pics" id="Spirit" src="images/spirit.jpeg" alt="Spirit rover" width="200" height="200" onclick="selectRover(this.id)" >  
       </div>
-     </div>
+      <button class="photo-button" onclick="getImages()">See photos <i aria-hidden="true"></i> </i></button>
+      </div>
+
+  <!-- Elon Start-->
    <div class="Elon-Musk">
      <img class="elon" src="images/musk.png" alt="Elon on Mars" width="300" height="900">
       <div class="vote">
@@ -90,11 +93,13 @@
 
 
 
-   
+   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
    <script src="assets/js/nasa.js"></script>
-  
+   <div id="photo-enable"></div>
   </body>
+  </html>
