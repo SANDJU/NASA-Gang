@@ -96,31 +96,36 @@ var cameras = {
 	opportunity:['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM'],
 	spirit:['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM']
 };
-function setCurrentSOL(value){
-	$("#currentSliderValue")[0].innerHTML = value;
-}
-function setSliderRange(value){
-	$( "#slider")[0].max = value;
-}
+
+
 //API and Developer Key
 var key = "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS";
 var nasa_api = "https://api.nasa.gov/mars-photos/api/v1";
 
-function cickrover(currentRoverId) {
+function setSliderRange(value){
+	$( "#slider")[0].max = value;
+}
+function setCurrentSOL(value){
+	$("#currentSliderValue")[0].innerHTML = value;
+}
+
+function cickrover(roverID) {
 
 	// deselect all rovers
 	$(".roverClick").removeClass('roverClick').addClass('rover');
 
 	// set selected rover active
-	var selector = "#" + currentRoverId;
+	var selector = "#" + roverID;
 	$(selector).addClass('roverClick');
 }
 
 
 //Start Rover Data
-function getRoverData(currentRoverId){
-	$.ajax({
-		url: nasa_api + "/manifests/" + currentRoverId + "?api_key=" + key,
+function getRoverData(roverID){
+
+	var url = "https://api.nasa.gov/mars-photos/api/v1"
+	var http = new XMLHttpRequest(
+		url: nasa_api + "/manifests/" + roverID + "?api_key=" + key,
 		type: 'GET',
 		error:function(data){
 			alert("An error has occured. See error message : " + data.responseText);
@@ -136,32 +141,32 @@ function getRoverData(currentRoverId){
 			setSliderRange(numberOfSols);
 
 			// set cameras 
-			setCameras(currentRoverId);
+			setCameras(roverID);
 
-		}
+	)}
 		
 	});	
 }
 
 
 
-function selectRover (currentRoverId) {
+function selectRover (roverID) {
 
-	this.roverID = currentRoverId;
+	this.roverID = roverID;
 
 	// set selected rover active
-	cickrover(currentRoverId);
+	cickrover(roverID);
 
 	// fetch rover information from Nasa API
-	getRoverData(currentRoverId);	
+	getRoverData(roverID);	
 }
 
 //Select camera
-function setCameras(currentRoverId){
+function setCameras(roverID){
 
 	var camerasToSet = [];
 
-	switch (currentRoverId)
+	switch (roverID)
 	{
 		case "Curiosity" : 
 			camerasToSet = cameras.curiosity;
@@ -192,7 +197,7 @@ function appendRadioButton(name){
 function getImages () {
 	var activeCamera = $('#sel_cam input:checked').val();
 
-	$.ajax({
+	fetch({
 		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=" + activeCamera + "&api_key=" + "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS",
 		error:function(data){
 			$("#right").append('<p id="warning">Info: No photos for this selection! Please change your parameters. Thank you.</p>');
