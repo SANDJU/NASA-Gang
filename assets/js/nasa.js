@@ -1,10 +1,10 @@
 let xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function () {
-	if (this.readyState == 4 && this.status == 200) {
+	if(this.readyState ==4 && this.status ==200) {
 		let data = JSON.parse(this.responseText);
-
-
+		
+		
 		let date = data["date"];
 		let explanation = data["explanation"];
 		let title = data["title"];
@@ -13,11 +13,11 @@ xmlhttp.onreadystatechange = function () {
 		document.getElementById("wrapper-url").src = url;
 		document.getElementById("wrapper-title").innerHTML = title;
 		document.getElementById("wrapper-explanation").innerHTML = explanation;
-
+		
 	}
 };
 
-
+		
 let queryUrl = "https://api.nasa.gov/planetary/apod?";
 let queryKey = "api_key=w3obOup6Ajl4dqP082rz16tqUZ27tfxDFdXlixML&";
 let queryDate = "date=" + "2015-02-09" + "&";
@@ -30,64 +30,55 @@ xmlhttp.open("GET", queryFull, true);
 xmlhttp.send();
 
 
-
-
-
-
-
-
-
-
-
 // donate function starts
-(function () {
-
-	var donations = document.querySelector('#donations');
-	var form = document.querySelector('form');
-	var nameInput = document.querySelector('#name');
-	var amountInput = document.querySelector('#amount');
-	var fail = document.querySelector('#fail');
-
-	form.addEventListener('submit', function (e) {
+	(function(){
+	
+		var donations = document.querySelector('#donations');
+		var form = document.querySelector('form');
+		var nameInput = document.querySelector('#name');
+		var amountInput = document.querySelector('#amount');
+		var fail = document.querySelector('#fail');
+		
+		form.addEventListener('submit',function(e){
 		e.preventDefault();
 
 		var name = nameInput.value;
 		var amount = amountInput.value;
 
-		if (!amount || !name) {
+		if(!amount || !name) {
 			fail.setAttribute('style', "display: block;");
 		} else {
 			fail.setAttribute('style', "display: none;");
 			donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
 			store();
 		}
-	}, false)
-
-	donations.addEventListener('click', function (e) {
+		},false)
+		
+		donations.addEventListener('click',function(e){
 		var t = e.target;
-		if (t.classList.contains('checked')) {
+		if(t.classList.contains('checked')){
 			t.parentNode.removeChild(t);
 		} else {
 			t.classList.add('checked');
 		}
 		store();
-	}, false)
-
-	function store() {
+		},false)
+		
+		function store() {
 		localStorage.myitems = donations.innerHTML;
-	}
-
-	function getValues() {
+		}
+		
+		function getValues() {
 		var storedValues = localStorage.myitems;
-		if (!storedValues) {
+		if(!storedValues) {
 			donations.innerHTML = '<li>Elon Musk - $179,400,000</li>';
 		}
 		else {
 			donations.innerHTML = storedValues;
 		}
-	}
-	getValues();
-})();
+		}
+		getValues();
+	})();
 // donate function ends
 
 //Rover Ids
@@ -96,21 +87,24 @@ var Opportunity = document.getElementById("Opportunity")
 var Spirit = document.getElementById("Spirit")
 var Rovers = document.getElementById("Rovers")
 
-//Start Rover Photos
+//Start Rover Photos Functions
 var currentRoverData = [];
 var roverImages = [];
 var roverID = "";
 var cameras = {
-	curiosity: ['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM'],
-	opportunity: ['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM'],
-	spirit: ['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM']
+	curiosity:['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM'],
+	opportunity:['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM'],
+	spirit:['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM']
 };
-
+function setCurrentSOL(value){
+	$("#currentSliderValue")[0].innerHTML = value;
+}
+function setSliderRange(value){
+	$( "#slider")[0].max = value;
+}
 //API and Developer Key
-var key = "PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
-var Cnasa_api = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
-var Onasa_api = "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=1000&api_key=PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
-var Snasa_api = "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?sol=1000&api_key=PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
+var key = "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS";
+var nasa_api = "https://api.nasa.gov/mars-photos/api/v1";
 
 function cickrover(currentRoverId) {
 
@@ -124,28 +118,34 @@ function cickrover(currentRoverId) {
 
 
 //Start Rover Data
-function getRoverData(currentRoverId) {
-	fetch(Cnasa_api + "/manifests/" + currentRoverId + "?api_key=" + key).then(data => {
+function getRoverData(currentRoverId){
+	$.ajax({
+		url: nasa_api + "/manifests/" + currentRoverId + "?api_key=" + key,
+		type: 'GET',
+		error:function(data){
+			alert("An error has occured. See error message : " + data.responseText);
+		},
+		success:function(data) {
+			currentRoverData = data;
+			$(".text").html("Name: " + data.photo_manifest.name + "<br>Launch date: " + data.photo_manifest.launch_date + "<br>Landing date: " + data.photo_manifest.landing_date + "<br>Newest sol: " + data.photo_manifest.max_sol + "<br>Total photos: " + data.photo_manifest.max_sol);
 
-		currentRoverData = data;
-		$(".text").html("Name: " + data.photo_manifest.name + "<br>Launch date: " + data.photo_manifest.launch_date + "<br>Landing date: " + data.photo_manifest.landing_date + "<br>Newest sol: " + data.photo_manifest.max_sol + "<br>Total photos: " + data.photo_manifest.max_sol);
+			// get number of sols
+			var numberOfSols = currentRoverData.photo_manifest.max_sol; //currentRoverData.numberOfSols
 
-		// get number of sols
-		var numberOfSols = currentRoverData.photo_manifest.max_sol; //currentRoverData.numberOfSols
+			// update slider range with number of sols
+			setSliderRange(numberOfSols);
 
-		// update slider range 
-		setSliderRange(numberOfSols);
+			// set cameras 
+			setCameras(currentRoverId);
 
-		// set cameras 
-		setCameras(currentRoverId);
-
-	}, err => {
-		alert("An error has occured. See error message : " + err.message);
-	})
+		}
+		
+	});	
 }
 
 
-function selectRover(currentRoverId) {
+
+function selectRover (currentRoverId) {
 
 	this.roverID = currentRoverId;
 
@@ -153,24 +153,25 @@ function selectRover(currentRoverId) {
 	cickrover(currentRoverId);
 
 	// fetch rover information from Nasa API
-	getRoverData(currentRoverId);
+	getRoverData(currentRoverId);	
 }
 
 //Select camera
-function setCameras(currentRoverId) {
+function setCameras(currentRoverId){
 
 	var camerasToSet = [];
 
-	switch (currentRoverId) {
-		case "Curiosity":
+	switch (currentRoverId)
+	{
+		case "Curiosity" : 
 			camerasToSet = cameras.curiosity;
 			break;
 
-		case "Opportunity":
+		case "Opportunity" :
 			camerasToSet = cameras.opportunity;
 			break;
 
-		case "Spirit":
+		case "Spirit" :
 			camerasToSet = cameras.spirit;
 			break;
 
@@ -184,21 +185,25 @@ function setCameras(currentRoverId) {
 
 }
 
-function appendRadioButton(name) {
-	$("#sel_cam").append('<li><input type="radio" name="camera" value="' + name + '">' + name + '</li>');
+function appendRadioButton(name){
+	$("#sel_cam").append('<li><input type="radio" name="camera" value="' + name + '">'+ name +'</li>');
 }
 
-function getImages() {
+function getImages () {
 	var activeCamera = $('#sel_cam input:checked').val();
 
-	fetch(Cnasa_api + "/rovers/" + roverID + "/photos?sol=" + 0 + "&camera=" + activeCamera + "&api_key=" + "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS").then((data) => {
-		roverImages = images.photos;
-		for (var i = 0; i < roverImages.length; i++) {
+	$.ajax({
+		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=" + activeCamera + "&api_key=" + "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS",
+		error:function(data){
+			$("#right").append('<p id="warning">Info: No photos for this selection! Please change your parameters. Thank you.</p>');
+		},
+		success:function(images) {
+			roverImages = images.photos;
+			for (var i = 0; i < roverImages.length; i++) {
 			$("#right").append('<img class="rov_img" src="' + roverImages[i].img_src + '">');
+			}
 		}
-	}, (err) => {
-		$("#right").append('<p id="warning">Info: No photos for this selection! Please change your parameters. Thank you.</p>');
-	})
+	});
 
 	$("#right").empty();
 }
