@@ -122,9 +122,8 @@ function cickrover(roverID) {
 
 //Start Rover Data
 function getRoverData(roverID){
-
 	var url = "https://api.nasa.gov/mars-photos/api/v1"
-	var http = new XMLHttpRequest(
+	$.ajax({
 		url: nasa_api + "/manifests/" + roverID + "?api_key=" + key,
 		type: 'GET',
 		error:function(data){
@@ -143,7 +142,7 @@ function getRoverData(roverID){
 			// set cameras 
 			setCameras(roverID);
 
-	)}
+		}
 		
 	});	
 }
