@@ -24,30 +24,31 @@
 /* overall styles end */
 
 /* header starts */
-    .splash-container {
+    .header-container {
         background-image: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1070&q=80");
         background-color: var(--secondary-color);
+
         z-index: 1;
         overflow: hidden;
-        /* scroll-over effect */
         width: 100%;
         height: 88%;
+        position: fixed !important;
         top: 0;
         left: 0;
-        position: fixed !important;
     }
       
-    .splash {
+    .header {
+        text-align: center;
+        text-transform: uppercase;
+
         width: 80%;
         height: 50%;
         margin: auto;
         position: absolute;
         top: 100px; left: 0; bottom: 0; right: 0;
-        text-align: center;
-        text-transform: uppercase;
     }
       
-    .splash-head {
+    .header-title {
         font-size: 20px;
         font-weight: bold;
         color: var(--primary-color);
@@ -60,17 +61,18 @@
         background-image: url("https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1070&q=80");
         background-color: var(--secondary-color);
         /* scroll-over effect */
-        position: absolute;
-        top: 87%;
+        z-index: 2;
         width: 100%;
         min-height: 12%;
-        z-index: 2;
+        position: absolute;
+        top: 87%;
     }
     
-    .content-head {
+    .content-title {
         font-weight: 400;
         text-transform: uppercase;
         letter-spacing: 0.1em;
+        
         margin: 2em 0 1em;
     }
     
@@ -78,11 +80,7 @@
         padding: 1em 1em 3em;
     }
     
-    .l-box {
-        padding: 1em;
-    }
-    
-    .l-box-lrg {
+    .box-lrg {
         padding: 2em;
     }
     
@@ -158,19 +156,19 @@
         font-size: 20px;
     }
   
-    .splash {
+    .header {
         width: 50%;
         height: 50%;
     }
   
-    .splash-head {
+    .header-title {
         font-size: 250%;
     }
   
   }
   
   @media (min-width: 78em) {
-    .splash-head {
+    .header-title {
         font-size: 300%;
     }
   }
