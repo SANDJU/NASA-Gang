@@ -31,54 +31,40 @@ xmlhttp.send();
 
 
 // donate function starts
-	(function(){
-	
+	function donations() {
 		var donations = document.querySelector('#donations');
 		var form = document.querySelector('form');
 		var nameInput = document.querySelector('#name');
 		var amountInput = document.querySelector('#amount');
 		var fail = document.querySelector('#fail');
 		
-		form.addEventListener('submit',function(e){
-		e.preventDefault();
+		form.addEventListener('submit',function(event){
+			event.preventDefault();
 
-		var name = nameInput.value;
-		var amount = amountInput.value;
+			var name = nameInput.value;
+			var amount = amountInput.value;
 
-		if(!amount || !name) {
-			fail.setAttribute('style', "display: block;");
-		} else {
-			fail.setAttribute('style', "display: none;");
-			donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
-			store();
-		}
-		},false)
-		
-		donations.addEventListener('click',function(e){
-		var t = e.target;
-		if(t.classList.contains('checked')){
-			t.parentNode.removeChild(t);
-		} else {
-			t.classList.add('checked');
-		}
-		store();
+			if(!amount || !name) {
+				fail.setAttribute('style', "display: block;");
+			} else {
+				fail.setAttribute('style', "display: none;");
+				donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
+				store();
+			}
 		},false)
 		
 		function store() {
-		localStorage.myitems = donations.innerHTML;
+			localStorage.myitems = donations.innerHTML;
 		}
 		
 		function getValues() {
-		var storedValues = localStorage.myitems;
-		if(!storedValues) {
-			donations.innerHTML = '<li>Elon Musk - $179,400,000</li>';
-		}
-		else {
+			var storedValues = localStorage.myitems;
+			
 			donations.innerHTML = storedValues;
 		}
-		}
 		getValues();
-	})();
+	};
+	donations();
 // donate function ends
 
 //Rover Ids
