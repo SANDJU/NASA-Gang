@@ -101,9 +101,10 @@ var cameras = {
 //API and Developer Key
 var key = "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS";
 var nasa_api = "https://api.nasa.gov/mars-photos/api/v1";
+var currentSliderValue = $("#currentSliderValue")[0].innerHTML;
 
 function setSliderRange(value){
-	$( "#slider")[0].max = value;
+	$( "#slider")[0].max = "99999";
 }
 function setCurrentSOL(value){
 	$("#currentSliderValue")[0].innerHTML = value;
@@ -122,6 +123,7 @@ function cickrover(roverID) {
 
 //Start Rover Data
 function getRoverData(roverID){
+
 	var url = "https://api.nasa.gov/mars-photos/api/v1"
 	$.ajax({
 		url: nasa_api + "/manifests/" + roverID + "?api_key=" + key,
