@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <!-- stylesheets start -->
-      <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" 
-      integrity="sha384-G9DpmGxRIF6tpgbrkZVcZDeIomEU22LgTguPAI739bbKytjPE/kHTK5YxjJAAEXC" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="CSS/style.css">
-    <!-- stylesheets end -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" 
+    integrity="sha384-G9DpmGxRIF6tpgbrkZVcZDeIomEU22LgTguPAI739bbKytjPE/kHTK5YxjJAAEXC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Life on Mars</title>
 
     <title>Life on Mars</title>
   </head>
@@ -56,15 +59,41 @@
                     <img class="pics" id="Curiosity" src="images/curiosity.jpeg" alt="Curiosity rover" width="200" height="200" onclick="selectRover(this.id)" >
                   </div>
 
-                <div id="Spirit" class="pure-u-lg-1-4"><p>Spirit</p>
-                  <img class="pics" id="Spirit" src="images/spirit.jpeg" alt="Spirit rover" width="200" height="200" onclick="selectRover(this.id)" >  
-                </div>
+          <h3>Select the Rover to view photos it's taken</h3>
+        
+          <div class="pure-g clearfix">
+            <div id="Opportunity" class="pure-u-lg-1-4"><p>Opportunity</p>
+            <img class="pics" id="Opportunity" src="images/Opportunity.png" alt="Opportunity rover" width="200" height="200" onclick="selectRover(this.id)" >
+            </div>
+            
+            <div id="Curiosity" class="pure-u-lg-1-4 clearfix"><p>Curiosity</p>
+              <img class="pics" id="Curiosity" src="images/curiosity.jpeg" alt="Curiosity rover" width="200" height="200" onclick="selectRover(this.id)" >  
 
-                <button class="photo-button" onclick="getImages()">See photos <i aria-hidden="true"></i> </i></button>
-              </div>
-            </section>
-          <!-- rover photos end-->
-
+            </div>
+            <div id="Spirit" class="pure-u-lg-1-4 clearfix"><p>Spirit</p>
+              <img class="pics" id="Spirit" src="images/spirit.jpeg" alt="Spirit rover" width="200" height="200" onclick="selectRover(this.id)" >  
+            </div>
+            <h2>Move the Slider to the Mars Sol date for photos</h2>
+            <div class="sel_sol">
+              <input id="slider" type="range" name="sol" min="0" max=data.photo_manifest.max_sol; onmousemove="setCurrentSOL(this.value)">
+              <div><label id="currentSliderValue">0</label></div>
+            </div>
+            <h3>Select a Camera</h3>
+            <div>
+            <ul id = "select-camera">
+              <li><input type="radio" name="camera" value="FHAZ"> FHAZ</li>
+              <li><input type="radio" name="camera" value="RHAZ"> RHAZ</li>
+              <li><input type="radio" name="camera" value="MAST"> MAST</li>
+              <li><input type="radio" name="camera" value="CHEMCAM"> CHEMCAM</li>
+              <li><input type="radio" name="camera" value="MAHLI"> MAHLI</li>
+              <li><input type="radio" name="camera" value="MARDI"> MARDI</li>
+              <li><input type="radio" name="camera" value="NAVCAM"> NAVCAM</li>
+              <li><input type="radio" name="camera" value="PANCAM"> PANCAM</li>
+              <li><input type="radio" name="camera" value="MINITES"> MINITES</li>
+              </ul>
+              <button class="photo-button" onclick="getImages()">See Photos <i class="fa fa-rocket" aria-hidden="true"></i> </i></button>
+          </div>
+        </section>
 
           <!-- donate section starts -->
             <section class="content">
@@ -113,7 +142,6 @@
     <!-- scripts  start -->
       <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
       <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
