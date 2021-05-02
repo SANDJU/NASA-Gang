@@ -65,6 +65,41 @@ function donations() {
 	getValues();
 };
 donations();
+=======
+	function donations() {
+		var donations = document.querySelector('#donations');
+		var form = document.querySelector('form');
+		var nameInput = document.querySelector('#name');
+		var amountInput = document.querySelector('#amount');
+		var fail = document.querySelector('#fail');
+		
+		form.addEventListener('submit',function(event){
+			event.preventDefault();
+
+			var name = nameInput.value;
+			var amount = amountInput.value;
+
+			if(!amount || !name) {
+				fail.setAttribute('style', "display: block;");
+			} else {
+				fail.setAttribute('style', "display: none;");
+				donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
+				store();
+			}
+		},false)
+		
+		function store() {
+			localStorage.myitems = donations.innerHTML;
+		}
+		
+		function getValues() {
+			var storedValues = localStorage.myitems;
+			
+			donations.innerHTML = storedValues;
+		}
+		getValues();
+	};
+	donations();
 // donate function ends
 
 //Rover Ids

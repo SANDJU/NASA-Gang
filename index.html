@@ -15,26 +15,38 @@
 	  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 	  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
-    <title>Life on Mars</title>
 
+    <title>Life on Mars</title>
   </head>
 
   <body>
+    <!-- header starts -->
+      <header class="header-container">
+        <div class="header">
+          <h1 class="header-title">Life on Mars</h1>
+          <br>
+          <p class="header-subtitle">
+            In a galaxy not so far away, because you're already in it, lets journey to a planet called Mars.
+          </p>
+        </div>
+      </header>
+    <!-- header ends -->
     
-    <div class="Mars-header">
-      <h1>Life on Mars!</h1>
-      <img id="wrapper-url" src="" class="w-100" alt="mars landing">
-      <h5 id="wrapper-title"></h5>
-      <p class="mb-2" id="wrapper-copyright"></p>
-      <p id="wrapper-explanation"></p>
-      
+    <!-- main body starts -->
+      <main class="content-wrapper">
+        <!-- picture of the day starts -->
+          <section>
+            <img id="wrapper-url" src="" class="w-100" alt="mars landing">
+            <h3 class="content-title is-center" id="wrapper-title"></h3>
+            <p class="mb-2" id="wrapper-copyright"></p>
+            <p class="is-center" id="wrapper-explanation"></p>
+          </section>
+        <!-- picture of the day ends -->
 
-    <h1>Photos from the Rovers!</h1>
-  
-    <div class="pure-g">
-     
+        <!-- rover photos start -->
+        <section class="content rover-section">
 
-          <h3>Select the Rover to view photos it's taken</h3>
+          <h3 class="content-title is-center">Select the Rover to view photos it's taken</h3>
         
           <div class="pure-g clearfix">
             <div id="Opportunity" class="pure-u-lg-1-4"><p>Opportunity</p>
@@ -70,43 +82,47 @@
           </div>
         </section>
 
+          <!-- donate section starts -->
+            <section class="content">
+              <h2 class="content-title is-center">HELP ELON GET HOME</h2>
 
-        <!-- donate section starts -->
-        <section class="row">
-          <h2 id="help-elon">HELP ELON GET HOME</h2>
-          <img src="./images/musk.png" class="col-md-6" alt="Elon Musk">
-          <div class="col">
-            <div class="row">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Donate:</label>
-                <input type="text" class="form-control" name="name" id="name" placeholder="Name" aria-label="name" aria-describedby="basic-addon1"/>
-                <br>
-                <form class="input-group mb-3">
-                  <span class="input-group-text">$</span>
-                  <span class="input-group-text">0.00</span>
-                  <input type="text" class="form-control" placeholder="Amount" aria-label="Dollar amount (with dot and two decimal places)" id="amount">
-                  <button class="btn btn-warning" type="submit" id="button-addon2 donate">Donate</button>
-                </form>
-                <div id="fail" style="display: none;">
-                  <div class="alert alert-danger" role="alert">
-                    <strong>Woops!</strong> Looks like you left something blank.
+              <div class="pure-g elon-section">
+                <div class="box-lrg pure-u-1 pure-u-md-2-5">
+                  <img class="pure-img-responsive" alt="Elon Musk" src="./images/musk.png">
+                </div>
+
+                <div class="box-lrg pure-u-1 pure-u-md-3-5">
+                  <form>
+                    <label for="donation" class="form-label">Donate:</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" aria-label="name" aria-describedby="basic-addon1"/>
+                    <div class="input-group mb-3">
+                      <span class="input-group-text">$</span>
+                      <span class="input-group-text">0.00</span>
+                      <input type="text" class="form-control" placeholder="Amount" aria-label="Dollar amount (with dot and two decimal places)" id="amount">
+                      <button class="btn btn-warning" type="submit" id="button-addon2 donate">Donate</button>
+                    </div>
+                    <div id="fail" style="display: none;">
+                      <div class="alert alert-danger" role="alert">
+                        <strong>Woops!</strong> Looks like you left something blank.
+                      </div>
+                    </div>
+                  </form>
+
+                  <label for="exampleFormControlTextarea1" class="form-label">Donations:</label>
+                  <div class="donations">
+                    <p class="is-center">Elon Musk - $179,400,000</p>
+                    <ol id="donations">
+
+                    </ol>
                   </div>
                 </div>
               </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Donations:</label>
-                <ol class="donations" id="donations">
-                  <li>Hello</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- donate section ends-->
-      </div>
-    </main>
+            </section>
+          <!-- donate section ends-->
+        </div>
+      </main>
+    <!-- main body ends -->
 
-    
     
 
 
