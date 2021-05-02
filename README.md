@@ -19,6 +19,7 @@ Screenshots:
 ![Screen Shot 2021-05-02 at 3 35 08 PM](https://user-images.githubusercontent.com/79028196/116828549-9c25dc80-ab5c-11eb-8a2a-43c8bbeb4953.png)
 
 Tech/Framework Used:
+
 CSS:
 PureCSS: https://purecss.io/
 
