@@ -134,7 +134,6 @@ function getRoverData(roverID) {
 		success: function (data) {
 			console.log(data)
 			currentRoverData = data;
-			//$(".text").html("Name: " + data.photo_manifest.name + "<br>Launch date: " + data.photo_manifest.launch_date + "<br>Landing date: " + data.photo_manifest.landing_date + "<br>Newest sol: " + data.photo_manifest.max_sol + "<br>Total photos: " + data.photo_manifest.max_sol);
 
 		}
 
