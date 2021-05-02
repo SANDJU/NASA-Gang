@@ -14,9 +14,9 @@ Come check out Life on Mars! We have an image of the layered rocks near Mount Sh
 
 Screenshots:
 
-    img1
+    ![Screen Shot 2021-05-02 at 3 34 27 PM](https://user-images.githubusercontent.com/79028196/116828545-94fece80-ab5c-11eb-86e8-1c5586e96775.png)
 
-    img2
+    ![Screen Shot 2021-05-02 at 3 35 08 PM](https://user-images.githubusercontent.com/79028196/116828549-9c25dc80-ab5c-11eb-8a2a-43c8bbeb4953.png)
 
 Tech/Framework Used:
 
