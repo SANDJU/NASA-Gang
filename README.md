@@ -21,11 +21,15 @@ Screenshots:
 Tech/Framework Used:
 
 CSS:
+
 PureCSS: https://purecss.io/
 
 NASA Apis: https://api.nasa.gov/
+
 Astronomy Picture of the Day (APOD): https://github.com/nasa/apod-api
+
 Mars Rover Photos: https://github.com/chrisccerami/mars-photo-api
+
 NASA Image and Library: https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf
 
 Breakdown of Tasks and Roles:
