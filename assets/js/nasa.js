@@ -1,10 +1,10 @@
 let xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function () {
-	if(this.readyState ==4 && this.status ==200) {
+	if (this.readyState == 4 && this.status == 200) {
 		let data = JSON.parse(this.responseText);
-		
-		
+
+
 		let date = data["date"];
 		let explanation = data["explanation"];
 		let title = data["title"];
@@ -13,11 +13,11 @@ xmlhttp.onreadystatechange = function () {
 		document.getElementById("wrapper-url").src = url;
 		document.getElementById("wrapper-title").innerHTML = title;
 		document.getElementById("wrapper-explanation").innerHTML = explanation;
-		
+
 	}
 };
 
-		
+
 let queryUrl = "https://api.nasa.gov/planetary/apod?";
 let queryKey = "api_key=w3obOup6Ajl4dqP082rz16tqUZ27tfxDFdXlixML&";
 let queryDate = "date=" + "2015-02-09" + "&";
@@ -31,54 +31,54 @@ xmlhttp.send();
 
 
 // donate function starts
-	(function(){
-	
-		var donations = document.querySelector('#donations');
-		var form = document.querySelector('form');
-		var nameInput = document.querySelector('#name');
-		var amountInput = document.querySelector('#amount');
-		var fail = document.querySelector('#fail');
-		
-		form.addEventListener('submit',function(e){
+(function () {
+
+	var donations = document.querySelector('#donations');
+	var form = document.querySelector('form');
+	var nameInput = document.querySelector('#name');
+	var amountInput = document.querySelector('#amount');
+	var fail = document.querySelector('#fail');
+
+	form.addEventListener('submit', function (e) {
 		e.preventDefault();
 
 		var name = nameInput.value;
 		var amount = amountInput.value;
 
-		if(!amount || !name) {
+		if (!amount || !name) {
 			fail.setAttribute('style', "display: block;");
 		} else {
 			fail.setAttribute('style', "display: none;");
 			donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
 			store();
 		}
-		},false)
-		
-		donations.addEventListener('click',function(e){
+	}, false)
+
+	donations.addEventListener('click', function (e) {
 		var t = e.target;
-		if(t.classList.contains('checked')){
+		if (t.classList.contains('checked')) {
 			t.parentNode.removeChild(t);
 		} else {
 			t.classList.add('checked');
 		}
 		store();
-		},false)
-		
-		function store() {
+	}, false)
+
+	function store() {
 		localStorage.myitems = donations.innerHTML;
-		}
-		
-		function getValues() {
+	}
+
+	function getValues() {
 		var storedValues = localStorage.myitems;
-		if(!storedValues) {
+		if (!storedValues) {
 			donations.innerHTML = '<li>Elon Musk - $179,400,000</li>';
 		}
 		else {
 			donations.innerHTML = storedValues;
 		}
-		}
-		getValues();
-	})();
+	}
+	getValues();
+})();
 // donate function ends
 
 //Rover Ids
@@ -92,21 +92,21 @@ var currentRoverData = [];
 var roverImages = [];
 var roverID = "";
 var cameras = {
-	curiosity:['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM'],
-	opportunity:['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM'],
-	spirit:['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM']
+	curiosity: ['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM'],
+	opportunity: ['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM'],
+	spirit: ['FHAZ', 'RHAZ', 'PANCAM', 'MINITES', 'NAVCAM']
 };
 
 
 //API and Developer Key
-var key = "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS";
+var key = "PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
 var nasa_api = "https://api.nasa.gov/mars-photos/api/v1";
 var currentSliderValue = $("#currentSliderValue")[0].innerHTML;
 
-function setSliderRange(value){
-	$( "#slider")[0].max = "99999";
+function setSliderRange(value) {
+	$("#slider")[0].max = "99999";
 }
-function setCurrentSOL(value){
+function setCurrentSOL(value) {
 	$("#currentSliderValue")[0].innerHTML = value;
 }
 
@@ -122,36 +122,27 @@ function cickrover(roverID) {
 
 
 //Start Rover Data
-function getRoverData(roverID){
+function getRoverData(roverID) {
 
-	var url = "https://api.nasa.gov/mars-photos/api/v1"
 	$.ajax({
-		url: nasa_api + "/manifests/" + roverID + "?api_key=" + key,
+		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=FHAZ" + "& api_key=8MVw29iMD3R88EJBobvj2hcAKZvzJcoR8NimnZDS",
 		type: 'GET',
-		error:function(data){
+		error: function (data) {
 			alert("An error has occured. See error message : " + data.responseText);
 		},
-		success:function(data) {
+		success: function (data) {
+			console.log(data)
 			currentRoverData = data;
 			$(".text").html("Name: " + data.photo_manifest.name + "<br>Launch date: " + data.photo_manifest.launch_date + "<br>Landing date: " + data.photo_manifest.landing_date + "<br>Newest sol: " + data.photo_manifest.max_sol + "<br>Total photos: " + data.photo_manifest.max_sol);
 
-			// get number of sols
-			var numberOfSols = currentRoverData.photo_manifest.max_sol; //currentRoverData.numberOfSols
-
-			// update slider range with number of sols
-			setSliderRange(numberOfSols);
-
-			// set cameras 
-			setCameras(roverID);
-
 		}
-		
-	});	
+
+	});
 }
 
 
 
-function selectRover (roverID) {
+function selectRover(roverID) {
 
 	this.roverID = roverID;
 
@@ -159,25 +150,24 @@ function selectRover (roverID) {
 	cickrover(roverID);
 
 	// fetch rover information from Nasa API
-	getRoverData(roverID);	
+	getRoverData(roverID);
 }
 
 //Select camera
-function setCameras(roverID){
+function setCameras(roverID) {
 
 	var camerasToSet = [];
 
-	switch (roverID)
-	{
-		case "Curiosity" : 
+	switch (roverID) {
+		case "Curiosity":
 			camerasToSet = cameras.curiosity;
 			break;
 
-		case "Opportunity" :
+		case "Opportunity":
 			camerasToSet = cameras.opportunity;
 			break;
 
-		case "Spirit" :
+		case "Spirit":
 			camerasToSet = cameras.spirit;
 			break;
 
@@ -191,22 +181,22 @@ function setCameras(roverID){
 
 }
 
-function appendRadioButton(name){
-	$("#sel_cam").append('<li><input type="radio" name="camera" value="' + name + '">'+ name +'</li>');
+function appendRadioButton(name) {
+	$("#sel_cam").append('<li><input type="radio" name="camera" value="' + name + '">' + name + '</li>');
 }
 
-function getImages () {
+function getImages() {
 	var activeCamera = $('#sel_cam input:checked').val();
 
 	fetch({
 		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=" + activeCamera + "&api_key=" + "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS",
-		error:function(data){
+		error: function (data) {
 			$("#right").append('<p id="warning">Info: No photos for this selection! Please change your parameters. Thank you.</p>');
 		},
-		success:function(images) {
+		success: function (images) {
 			roverImages = images.photos;
 			for (var i = 0; i < roverImages.length; i++) {
-			$("#right").append('<img class="rov_img" src="' + roverImages[i].img_src + '">');
+				$("#right").append('<img class="rov_img" src="' + roverImages[i].img_src + '">');
 			}
 		}
 	});
