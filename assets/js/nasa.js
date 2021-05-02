@@ -31,40 +31,54 @@ xmlhttp.send();
 
 
 // donate function starts
-function donations() {
+(function () {
+
 	var donations = document.querySelector('#donations');
 	var form = document.querySelector('form');
 	var nameInput = document.querySelector('#name');
 	var amountInput = document.querySelector('#amount');
 	var fail = document.querySelector('#fail');
-	
-	form.addEventListener('submit',function(event){
-		event.preventDefault();
+
+	form.addEventListener('submit', function (e) {
+		e.preventDefault();
 
 		var name = nameInput.value;
 		var amount = amountInput.value;
 
-		if(!amount || !name) {
+		if (!amount || !name) {
 			fail.setAttribute('style', "display: block;");
 		} else {
 			fail.setAttribute('style', "display: none;");
 			donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
 			store();
 		}
-	},false)
-	
+	}, false)
+
+	donations.addEventListener('click', function (e) {
+		var t = e.target;
+		if (t.classList.contains('checked')) {
+			t.parentNode.removeChild(t);
+		} else {
+			t.classList.add('checked');
+		}
+		store();
+	}, false)
+
 	function store() {
 		localStorage.myitems = donations.innerHTML;
 	}
-	
+
 	function getValues() {
 		var storedValues = localStorage.myitems;
-		
-		donations.innerHTML = storedValues;
+		if (!storedValues) {
+			donations.innerHTML = '<li>Elon Musk - $179,400,000</li>';
+		}
+		else {
+			donations.innerHTML = storedValues;
+		}
 	}
 	getValues();
-};
-donations();
+})();
 // donate function ends
 
 //Rover Ids
@@ -124,4 +138,68 @@ function getRoverData(roverID) {
 		}
 
 	});
+}
+
+
+
+function selectRover(roverID) {
+
+	this.roverID = roverID;
+
+	// set selected rover active
+	cickrover(roverID);
+
+	// fetch rover information from Nasa API
+	getRoverData(roverID);
+}
+
+//Select camera
+function setCameras(roverID) {
+
+	var camerasToSet = [];
+
+	switch (roverID) {
+		case "Curiosity":
+			camerasToSet = cameras.curiosity;
+			break;
+
+		case "Opportunity":
+			camerasToSet = cameras.opportunity;
+			break;
+
+		case "Spirit":
+			camerasToSet = cameras.spirit;zz
+			break;
+
+	}
+	$("#sel_cam").empty();
+
+
+	for (var i = 0; i < camerasToSet.length; i++) {
+		appendRadioButton(camerasToSet[i]);
+	}
+
+}
+
+function appendRadioButton(name) {
+	$("#sel_cam").append('<li><input type="radio" name="camera" value="' + name + '">' + name + '</li>');
+}
+
+function getImages() {
+	var activeCamera = $('#sel_cam input:checked').val();
+
+	fetch({
+		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=" + activeCamera + "&api_key=" + "0MBgxNs4QpgozbvtFsYv3gdhR5ezpO1bOKiZJ1dS",
+		error: function (data) {
+			$("#right").append('<p id="warning">Info: No photos for this selection! Please change your parameters. Thank you.</p>');
+		},
+		success: function (images) {
+			roverImages = images.photos;
+			for (var i = 0; i < roverImages.length; i++) {
+				$("#right").append('<img class="rov_img" src="' + roverImages[i].img_src + '">');
+			}
+		}
+	});
+
+	$("#right").empty();
 }
