@@ -36,69 +36,69 @@ function donations() {
 	var nameInput = document.querySelector('#name');
 	var amountInput = document.querySelector('#amount');
 	var fail = document.querySelector('#fail');
-	
-	form.addEventListener('submit',function(event){
+
+	form.addEventListener('submit', function (event) {
 		event.preventDefault();
 
 		var name = nameInput.value;
 		var amount = amountInput.value;
 
-		if(!amount || !name) {
+		if (!amount || !name) {
 			fail.setAttribute('style', "display: block;");
 		} else {
 			fail.setAttribute('style', "display: none;");
 			donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
 			store();
 		}
-	},false)
-	
+	}, false)
+
 	function store() {
 		localStorage.myitems = donations.innerHTML;
 	}
-	
+
 	function getValues() {
 		var storedValues = localStorage.myitems;
-		
+
 		donations.innerHTML = storedValues;
 	}
 	getValues();
 };
 donations();
 
-	function donations() {
-		var donations = document.querySelector('#donations');
-		var form = document.querySelector('form');
-		var nameInput = document.querySelector('#name');
-		var amountInput = document.querySelector('#amount');
-		var fail = document.querySelector('#fail');
-		
-		form.addEventListener('submit',function(event){
-			event.preventDefault();
+function donations() {
+	var donations = document.querySelector('#donations');
+	var form = document.querySelector('form');
+	var nameInput = document.querySelector('#name');
+	var amountInput = document.querySelector('#amount');
+	var fail = document.querySelector('#fail');
 
-			var name = nameInput.value;
-			var amount = amountInput.value;
+	form.addEventListener('submit', function (event) {
+		event.preventDefault();
 
-			if(!amount || !name) {
-				fail.setAttribute('style', "display: block;");
-			} else {
-				fail.setAttribute('style', "display: none;");
-				donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
-				store();
-			}
-		},false)
-		
-		function store() {
-			localStorage.myitems = donations.innerHTML;
+		var name = nameInput.value;
+		var amount = amountInput.value;
+
+		if (!amount || !name) {
+			fail.setAttribute('style', "display: block;");
+		} else {
+			fail.setAttribute('style', "display: none;");
+			donations.innerHTML += '<li>' + name + ' - $' + amount + '</li>';
+			store();
 		}
-		
-		function getValues() {
-			var storedValues = localStorage.myitems;
-			
-			donations.innerHTML = storedValues;
-		}
-		getValues();
-	};
-	donations();
+	}, false)
+
+	function store() {
+		localStorage.myitems = donations.innerHTML;
+	}
+
+	function getValues() {
+		var storedValues = localStorage.myitems;
+
+		donations.innerHTML = storedValues;
+	}
+	getValues();
+};
+donations();
 // donate function ends
 
 
@@ -125,7 +125,7 @@ var nasa_api = "https://api.nasa.gov/mars-photos/api/v1";
 //var currentSliderValue = $("#currentSliderValue")[0].innerHTML;
 
 function setSliderRange(value) {
-	$("#slider")[0].max = "99999";
+	$("#slider")[0].max = value;
 }
 function setCurrentSOL(value) {
 	$("#currentSliderValue")[0].innerHTML = value;
@@ -151,16 +151,23 @@ function getRoverData(roverID) {
 		error: function (data) {
 			alert("An error has occured. See error message : " + data.responseText);
 		},
-		
-		success: function (data) {
+
+		success:function(data) {
 			console.log(data)
 			currentRoverData = data;
+			$(".text").html(data.photo_manifest + "<br>Launch date:" + data.photo_manifest + "<br>Landing date:" + data.photo_manifest + "<br>Newest sol:" + data.photo_manifest + "<br>Total photos:" + data.photo_manifest);
+			// get number of sols
+			var numberOfSols = currentRoverData.photo_manifest; //currentRoverData.numberOfSols
 
+			// update slider range with number of sols
+			setSliderRange(numberOfSols);
+
+			// set cameras 
+			setCameras(roverID)
 		}
 
 	});
 }
-https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
 
 
 function selectRover(roverID) {
@@ -189,7 +196,7 @@ function setCameras(roverID) {
 			break;
 
 		case "spirit":
-			camerasToSet = cameras.spirit;zz
+			camerasToSet = cameras.spirit; zz
 			break;
 
 	}
