@@ -65,7 +65,7 @@ function donations() {
 	getValues();
 };
 donations();
-=======
+
 	function donations() {
 		var donations = document.querySelector('#donations');
 		var form = document.querySelector('form');
