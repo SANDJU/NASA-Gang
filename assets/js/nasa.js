@@ -29,7 +29,6 @@ var api_key = "DEMO_KEY";
 xmlhttp.open("GET", queryFull, true);
 xmlhttp.send();
 
-
 // donate function starts
 function donations() {
 	var donations = document.querySelector('#donations');
@@ -102,10 +101,11 @@ donations();
 	donations();
 // donate function ends
 
+
 //Rover Ids
-var Curiosity = document.getElementById("Curriosity")
-var Opportunity = document.getElementById("Opportunity")
-var Spirit = document.getElementById("Spirit")
+var Curiosity = document.getElementById("curriosity")
+var Opportunity = document.getElementById("opportunity")
+var Spirit = document.getElementById("spirit")
 var Rovers = document.getElementById("Rovers")
 
 //Start Rover Photos Functions
@@ -120,9 +120,9 @@ var cameras = {
 
 
 //API and Developer Key
-var key = "PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
+var key = "&api_key=PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
 var nasa_api = "https://api.nasa.gov/mars-photos/api/v1";
-var currentSliderValue = $("#currentSliderValue")[0].innerHTML;
+//var currentSliderValue = $("#currentSliderValue")[0].innerHTML;
 
 function setSliderRange(value) {
 	$("#slider")[0].max = "99999";
@@ -146,17 +146,81 @@ function cickrover(roverID) {
 function getRoverData(roverID) {
 
 	$.ajax({
-		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=FHAZ" + "& api_key=8MVw29iMD3R88EJBobvj2hcAKZvzJcoR8NimnZDS",
+		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + key,
 		type: 'GET',
 		error: function (data) {
 			alert("An error has occured. See error message : " + data.responseText);
 		},
+		
 		success: function (data) {
 			console.log(data)
 			currentRoverData = data;
-			$(".text").html("Name: " + data.photo_manifest.name + "<br>Launch date: " + data.photo_manifest.launch_date + "<br>Landing date: " + data.photo_manifest.landing_date + "<br>Newest sol: " + data.photo_manifest.max_sol + "<br>Total photos: " + data.photo_manifest.max_sol);
 
 		}
 
 	});
+}
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
+
+
+function selectRover(roverID) {
+
+	this.roverID = roverID;
+
+	// set selected rover active
+	cickrover(roverID);
+
+	// fetch rover information from Nasa API
+	getRoverData(roverID);
+}
+
+//Select camera
+function setCameras(roverID) {
+
+	var camerasToSet = [];
+
+	switch (roverID) {
+		case "curiosity":
+			camerasToSet = cameras.curiosity;
+			break;
+
+		case "opportunity":
+			camerasToSet = cameras.opportunity;
+			break;
+
+		case "spirit":
+			camerasToSet = cameras.spirit;zz
+			break;
+
+	}
+	$("#sel_cam").empty();
+
+
+	for (var i = 0; i < camerasToSet.length; i++) {
+		appendRadioButton(camerasToSet[i]);
+	}
+
+}
+
+function appendRadioButton(name) {
+	$("#sel_cam").append('<li><input type="radio" name="camera" value="' + name + '">' + name + '</li>');
+}
+
+function getImages() {
+	var activeCamera = $('#sel_cam input:checked').val();
+
+	$.ajax({
+		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=" + activeCamera + key,
+		error: function (data) {
+			$("#right").append('<p id="warning">Info: No photos for this selection! Please change your parameters. Thank you.</p>');
+		},
+		success: function (images) {
+			roverImages = images.photos;
+			for (var i = 0; i < roverImages.length; i++) {
+				$("#right").append('<img class="rov_img" src="' + roverImages[i].img_src + '">');
+			}
+		}
+	});
+
+	$("#right").empty();
 }
