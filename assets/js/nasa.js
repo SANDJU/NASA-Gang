@@ -1,3 +1,4 @@
+// APOD image function begins
 let xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function () {
@@ -28,7 +29,25 @@ var api_key = "DEMO_KEY";
 
 xmlhttp.open("GET", queryFull, true);
 xmlhttp.send();
+// APOD image function ends
 
+//NASA Image function begins
+var photoURL = "https://images-api.nasa.gov/search?q=ingenuity&description=ingenuity&media_type=image"
+function getPhoto() {
+    $.ajax({
+        url:photoURL,
+        method:"GET",
+    }).then(function(data) {
+        console.log(data);
+        var photoPull = data.collection.items[5
+		].links[0].href;
+        console.log(photoPull);
+        $("#img").attr("src", photoPull);
+        
+    });
+}
+getPhoto();
+//NASA Image function ends
 // donate function starts
 function donations() {
 	var donations = document.querySelector('#donations');
