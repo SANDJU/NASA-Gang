@@ -89,6 +89,7 @@
         text-align: center;
     }
     
+    
     /* donations/help elon */
         .elon-section {
             display: flex;
@@ -102,6 +103,8 @@
             border-radius: 5px;
             color: var(--secondary-color);
         }
+
+                   
 
 .rover-section p {
     text-align: center;
@@ -183,3 +186,82 @@
     }
   }
   /* media queries end */
+
+  /* Space X Launch Images*/
+    .gallery {
+    border: 1px solid #ccc;
+    }
+    .gallery img {
+    width: 100%;
+    height: auto;    
+}
+    .des {
+    padding: 10px;
+    text-align: center;
+    color:orange;
+    background: black;
+    align-items: center;
+    width: 100%;
+}
+    .responsive {
+    padding: 0 6px;
+    float: left;
+    width: 25%;
+}
+    .img .space-x-image {
+    cursor: pointer;
+}
+    .section-title {
+    text-align: center;
+}
+section .space-x {
+    font-family: sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+/* Popup Styling Section */
+.popup {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    display: none;
+    text-align: left;
+   
+}
+.popup-text {
+    background-color: lightgray;
+    margin: 0% auto;
+    padding: 20px;
+    width: 50%;
+    color: black;
+    text-align: left;
+    
+    
+}
+.close-btn {
+    color:gray;
+    float: right;
+    font-size: 30px;
+    align-items: right;
+}
+.close-btn:hover, .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    
+
+  
+
+
+
+
+
+
+
+
