@@ -18,7 +18,6 @@ xmlhttp.onreadystatechange = function () {
 	}
 };
 
-
 let queryUrl = "https://api.nasa.gov/planetary/apod?";
 let queryKey = "api_key=w3obOup6Ajl4dqP082rz16tqUZ27tfxDFdXlixML&";
 let queryDate = "date=" + "2015-02-09" + "&";
@@ -139,16 +138,8 @@ var cameras = {
 
 
 //API and Developer Key
-var key = "&api_key=PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
+var key = "&page=1&api_key=PUxgro2fgT0RlNQ3CSy2X8Zxk0hbwxZoWFR2UPh3";
 var nasa_api = "https://api.nasa.gov/mars-photos/api/v1";
-//var currentSliderValue = $("#currentSliderValue")[0].innerHTML;
-
-function setSliderRange(value) {
-	$("#slider")[0].max = value;
-}
-function setCurrentSOL(value) {
-	$("#currentSliderValue")[0].innerHTML = value;
-}
 
 function cickrover(roverID) {
 
@@ -165,7 +156,7 @@ function cickrover(roverID) {
 function getRoverData(roverID) {
 
 	$.ajax({
-		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + key,
+		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + "62" + key,
 		type: 'GET',
 		error: function (data) {
 			alert("An error has occured. See error message : " + data.responseText);
@@ -174,12 +165,6 @@ function getRoverData(roverID) {
 		success:function(data) {
 			console.log(data)
 			currentRoverData = data;
-			$(".text").html(data.photo_manifest + "<br>Launch date:" + data.photo_manifest + "<br>Landing date:" + data.photo_manifest + "<br>Newest sol:" + data.photo_manifest + "<br>Total photos:" + data.photo_manifest);
-			// get number of sols
-			var numberOfSols = currentRoverData.photo_manifest; //currentRoverData.numberOfSols
-
-			// update slider range with number of sols
-			setSliderRange(numberOfSols);
 
 			// set cameras 
 			setCameras(roverID)
@@ -215,7 +200,7 @@ function setCameras(roverID) {
 			break;
 
 		case "spirit":
-			camerasToSet = cameras.spirit; zz
+			camerasToSet = cameras.spirit; 
 			break;
 
 	}
@@ -236,7 +221,7 @@ function getImages() {
 	var activeCamera = $('#sel_cam input:checked').val();
 
 	$.ajax({
-		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + currentSliderValue + "&camera=" + activeCamera + key,
+		url: nasa_api + "/rovers/" + roverID + "/photos?sol=" + "62" + key,
 		error: function (data) {
 			$("#right").append('<p id="warning">Info: No photos for this selection! Please change your parameters. Thank you.</p>');
 		},
@@ -247,7 +232,6 @@ function getImages() {
 			}
 		}
 	});
-
 	$("#right").empty();
 }
 /* Popup 1 variables and Functions */

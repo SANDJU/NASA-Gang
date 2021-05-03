@@ -115,6 +115,15 @@
 .pics {
     border: 1px solid orange;
 }
+.text {
+        width: 200px;
+        height: 120px;
+        color: orange;
+        font-size: 16px;
+        text-align: left;
+        margin: 10px auto;
+        font-family: 'Lato', sans-serif;
+}
 .roverClick {
 	border: 2px solid rgb(235, 247, 9);
 }

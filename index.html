@@ -78,12 +78,10 @@
             <div id="spirit" class="pure-u-lg-1-4 clearfix"><p>Spirit</p>
               <img class="pics" id="spirit" src="images/spirit.jpeg" alt="Spirit rover" width="200" height="200" onclick="selectRover(this.id)" >  
             </div>
-            <h2>Move the Slider to the Mars Sol date for photos</h2>
             <div class="sel_sol">
-              <input id="x1" type="range" name="sol" min="0" max=data.photo_manifest.max_sol; onmousemove="setCurrentSOL(this.value)">
-              <div><label id="currentSliderValue">0</label></div>
             </div>
             <h3>Select a Camera</h3>
+            <div class="rovertext"></div>
             <div>
             <ul id = "select-camera">
               <li><input type="radio" name="camera" value="FHAZ"> FHAZ</li>
@@ -98,6 +96,7 @@
               </ul>
               <button class="photo-button" onclick="getImages()">See Photos <i class="fa fa-rocket" aria-hidden="true"></i> </i></button>
           </div>
+          <div id="right"></div>
         </section>
 
         <!--Space X Lanch Section-->
