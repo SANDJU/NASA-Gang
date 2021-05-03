@@ -18,7 +18,6 @@ xmlhttp.onreadystatechange = function () {
 	}
 };
 
-
 let queryUrl = "https://api.nasa.gov/planetary/apod?";
 let queryKey = "api_key=w3obOup6Ajl4dqP082rz16tqUZ27tfxDFdXlixML&";
 let queryDate = "date=" + "2015-02-09" + "&";
