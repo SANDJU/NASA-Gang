@@ -233,6 +233,5 @@ function getImages() {
 			}
 		}
 	});
-
 	$("#right").empty();
 }
