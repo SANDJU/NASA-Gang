@@ -250,3 +250,84 @@ function getImages() {
 
 	$("#right").empty();
 }
+/* Popup 1 variables and Functions */
+var popup = document.getElementById('popup-one')
+var popupBtn = document.getElementById('btn-1')
+var closeBtn = document.getElementsByClassName('close-btn')[0]
+window.addEventListener('click', clickOutOne);
+
+popupBtn.addEventListener('click', openPopup);
+
+function openPopup(){
+	popup.style.display = 'block';
+}
+closeBtn.addEventListener('click', closePopup)
+
+function closePopup(){
+	popup.style.display = 'none'
+}
+function clickOutOne(e){
+	if(e.target == popup)
+	popup.style.display = 'none'
+}
+/* Popup Variables and Functions for Popup 2 */
+
+var popupTwo = document.getElementById('popup-two')
+var popupBtnTwo = document.getElementById('btn-2')
+var closeBtnTwo = document.getElementsByClassName('close-btn')[1]
+window.addEventListener('click', clickOutTwo);
+
+popupBtnTwo.addEventListener('click', openPopupTwo);
+
+function openPopupTwo(){
+	popupTwo.style.display = 'block'
+}
+closeBtnTwo.addEventListener('click', closePopupTwo)
+
+function closePopupTwo(){
+	popupTwo.style.display = 'none'
+}
+function clickOutTwo(e){
+	if(e.target == popupTwo)
+	popupTwo.style.display = 'none'
+}
+/* Popup Variables and Funcions for Popup 3 */
+var popupThree = document.getElementById('popup-three')
+var popupBtnThree = document.getElementById('btn-3')
+var closeBtnThree = document.getElementsByClassName('close-btn')[2]
+window.addEventListener('click', clickOutThree);
+
+popupBtnThree.addEventListener('click', openPopupThree);
+
+function openPopupThree(){
+	popupThree.style.display = 'block'
+}
+closeBtnThree.addEventListener('click', closePopupThree)
+
+function closePopupThree(){
+	popupThree.style.display = 'none'
+}
+function clickOutThree(e){
+	if(e.target == popupThree)
+	popupThree.style.display = 'none'
+}
+/* Popup Variables and Functions for Popup 4 */
+var popupFour = document.getElementById('popup-four')
+var popupBtnFour = document.getElementById('btn-4')
+var closeBtnFour = document.getElementsByClassName('close-btn')[3]
+window.addEventListener('click', clickOutFour);
+
+popupBtnFour.addEventListener('click', openPopupFour);
+
+function openPopupFour(){
+	popupFour.style.display = 'block'
+}
+closeBtnFour.addEventListener('click', closePopupFour)
+
+function closePopupFour(){
+	popupFour.style.display = 'none'
+}
+function clickOutFour(e){
+	if(e.target == popupFour)
+	popupFour.style.display = 'none'
+}
