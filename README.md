@@ -8,9 +8,9 @@ https://sandju.github.io/NASA-Gang/
 
 This repository holds an app with the key to space. See what Life on Mars is like with this site that uses NASA amazing API’s to show photos from the Mars Rovers and Mars image from Astronomy Photo of the Day.
 
-We were motivated to work on this projects when looking at the amazing APIs offered for free from NASA.
+We were motivated to work on this project when looking at the amazing APIs offered for free from NASA.
 
-Come check out Life on Mars! We have an image of the layered rocks near Mount Sharp on Mars. These layered rocks look just like something you would see here in Utah! Did you know that Mars has a helicopter? Yes, a helicopter! The Mars Helicopter, Ingenuity, recently had several successful flights and has received a new mission to continue flying over Mars. We used NASA’s Mars Rover API to see images from the 3 Mars Rovers. Last but not least, help Elon Musk get home! You heard that right! We have set up a donation that will help fund Elon Musk’s trip to Mars.
+Come check out Life on Mars! We have an image of the layered rocks near Mount Sharp on Mars. These layered rocks look just like something you would see here in Utah! Did you know that Mars has a helicopter? Yes, a helicopter! The Mars Helicopter, Ingenuity, recently had several successful flights and has received a new mission to continue flying over Mars. We used NASA’s Mars Rover API to see images from the 3 Mars Rovers. Want to know about upcoming SpaceX launches? We got it!! Click on the upcoming SpaceX launch date to find out more. Last but not least, help Elon Musk get home! You heard that right! We have set up a donation that will help fund Elon Musk’s trip to Mars.
 
 Screenshots:
 
