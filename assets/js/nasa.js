@@ -214,6 +214,5 @@ function getImages() {
 			}
 		}
 	});
-
 	$("#right").empty();
 }
